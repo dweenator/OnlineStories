@@ -248,6 +248,8 @@
 				</div>
 			<button class="btn btn-default" id="submit-review">Submit Review</button>
 			</form>
+			<div>
+			
 			</div>
 			
 			

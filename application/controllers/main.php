@@ -123,7 +123,7 @@ class main extends CI_Controller{
 	$this->form_validation->set_rules('review-content', 'Summary', 'required');
 	
 	
-		if($this->form_validation->run() == FALSE AND $user_id == NULL){
+		if($this->form_validation->run() == FALSE OR $this->user_id == NULL){
 		$this->session->set_flashdata('message', 'Rating/Summary required');
 		redirect('pages/storyprofile/'.$story_id, 'refresh');
 		}else{
