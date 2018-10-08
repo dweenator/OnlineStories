@@ -3,7 +3,7 @@ class story_model extends CI_Model {
 	
 	public function story_exist($story_id){
 	$this->db->select();
-	$this->db->from('published_story');
+	$this->db->from('story');
 	$this->db->where('story_id', $story_id);
 	$count = $this->db->count_all_results();
 	if($count === 1){
@@ -38,15 +38,15 @@ class story_model extends CI_Model {
 	}
 	
 	
-	public function get_published_ids($user_id){
+	public function get_story_ids($user_id){
 	$data = array();
 	$this->db->select('story_id');
-	$query = $this->db->get_where('published_story', array('user_id' => $user_id))->result();
+	$query = $this->db->get_where('story', array('user_id' => $user_id))->result();
 	$counter = 0;
 	foreach($query as $row){
 		$data[$counter] = $row->story_id;
 		$counter++;
-	}
+	} 
 	return $data;
 	}
 	
@@ -95,7 +95,7 @@ class story_model extends CI_Model {
 	public function get_chapters($story_id){
 	$data = array();
 	$this->db->select('chapter_id,chapter_number,chapter_title');
-	$this->db->from('chapters');
+	$this->db->from('chapter');
 	$this->db->where('story_id', $story_id);
 	$query = $this->db->get();
 	if($query->num_rows() > 0){
@@ -107,10 +107,11 @@ class story_model extends CI_Model {
 	return $data;
 	}
 	
+	
 	public function get_chapter_content($chapter_id){
 	$data = array();
 	$this->db->select('story_id,chapter_id,chapter_number,chapter_title, chapter_content');
-	$this->db->from('chapters');
+	$this->db->from('chapter');
 	$this->db->where('chapter_id', $chapter_id);
 	$query = $this->db->get();
 	if($query->num_rows() > 0){
@@ -124,6 +125,20 @@ class story_model extends CI_Model {
 	}
 	return $data;
 	}
+
+	public function get_chapter_num($story_id){
+	$this->db->select('chapter_number');
+	$this->db->from('chapter');
+	$this->db->where('story_id', $story_id);
+	$this->db->order_by('chapter_number', 'DESC');
+	$query = $this->db->get();
+		if($query->num_rows() > 0){
+			foreach($query->result() as $row){
+			return $row->chapter_number;}
+		}else{
+			return 1;
+		}
+	}
 	
 	public function get_previous_chapter_id($story_id,$number){
 	$data = array();
@@ -133,7 +148,7 @@ class story_model extends CI_Model {
 		$prev = $number; 
 	}
 	$this->db->select('chapter_id');
-	$this->db->from('chapters');
+	$this->db->from('chapter');
 	$this->db->where('story_id', $story_id);
 	$this->db->where('chapter_number', $prev);
 	$query = $this->db->get();
@@ -153,7 +168,7 @@ class story_model extends CI_Model {
 		$next = $number; 
 	}
 	$this->db->select('chapter_id');
-	$this->db->from('chapters');
+	$this->db->from('chapter');
 	$this->db->where('story_id', $story_id);
 	$this->db->where('chapter_number', $next);
 	$query = $this->db->get();

@@ -8,7 +8,7 @@
     <div class="col-lg-10 text-left"> 
 	<table class="table">
 	<tbody>
-	<form method="post" action="<?php echo base_url(); ?>main/publish_story" enctype="multipart/form-data">
+	<form method="post" action="<?php echo base_url(); ?>story/publish_story" enctype="multipart/form-data">
 	<tr>
 	<div class="form-group">
 		<td><label for="cover">Cover</label></td>

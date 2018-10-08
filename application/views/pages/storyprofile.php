@@ -134,7 +134,6 @@
 	<div class="content col-lg-10">
 	
 	<div class="row">
-	
 		<div class="col-lg-4" id="cover-image">
 		<?php if(isset($story['image'])){ ?>
 		<img class="img-rounded" src="<?php echo $story['image']; ?>">
@@ -151,7 +150,6 @@
 		<a type="button" class="btn btn-default" href="<?php echo base_url().'story/bookmark/'.$story['id']; ?>">Bookmark</a>
 		</div>
 		</div>
-		
 	</div>
 	
 	<div class="row">
@@ -169,7 +167,7 @@
 		
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="about">
-			<div class="row">
+			
 			<h1>Synopsis</h1>
 			<p><?php echo $story['synopsis']; ?></p>
 			<div class="panel">
@@ -249,14 +247,10 @@
 			<button class="btn btn-default" id="submit-review">Submit Review</button>
 			</form>
 			<div>
-			
 			</div>
-			
-			
-			
-			
 			</div>
 		</div>
+		
 		<div class="tab-pane fade" id="ToC">
 			<div class="row">
 			<div id="ToC-notice" class="col-lg-4">
@@ -274,14 +268,13 @@
 			</div>
 			</div>
 		</div>
-	</div>
-
-	</div>
+	
 	</div>
 	</div>
 
 	</div>
 	<div class="col-lg-1 sidenav"></div>
+	</div>
 </div>
 <script>
 $(document).ready(function () {

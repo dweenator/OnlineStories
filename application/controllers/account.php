@@ -100,14 +100,14 @@ class account extends CI_Controller {
 	$username = $this->session->userdata('username');
 	$data['profile']['display_name'] = $username;
 	$user_id = $this->account_model->get_userid($username);
-	$published_ids = $this->story_model->get_published_ids($user_id);
+	$story_ids = $this->story_model->get_story_ids($user_id);
 	
-		if(count($published_ids) > 0)
+		if(count($story_ids) > 0)
 		{
 		$where = array('user_id' => $user_id);
-		$num_rows = $this->pagination_model->count_rows('published_story', $where);
+		$num_rows = $this->pagination_model->count_rows('story', $where);
 	
-		$data['stories'] = $this->story_model->get_stories($published_ids);
+		$data['stories'] = $this->story_model->get_stories($story_ids);
 		}
 	
 	$data['title'] = 'Published Stories';

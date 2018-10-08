@@ -4,15 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class dashboard_story_model extends CI_Model{
 
 	public function get_story($story_id){
-	$this->db->select('story.story_id,thumbnail,story_title,synopsis,display_name');
+	$this->db->select('story.story_id,story_title,synopsis,display_name');
 	$this->db->from('story');
-	$this->db->join('story_cover_image', 'story_cover_image.story_id = '.$story_id);
 	$this->db->join('user_profile', 'user_profile.user_id = story.user_id');
 	$this->db->where('story.story_id', $story_id);
 	$story = $this->db->get()->result();
 	foreach($story as $row){
 		$data['story_id'] = $row->story_id;
-		$data['image'] = $row->thumbnail;
+		$data['image'] = NULL;
 		$data['title'] = $row->story_title;
 		$data['synopsis'] = $row->synopsis;
 		$data['author'] = $row->display_name;

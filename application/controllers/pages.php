@@ -51,7 +51,7 @@ class pages extends CI_Controller {
 	$story_exists = $this->story_model->story_exist($story_id);
 		if($story_exists){
 		$data['story'] = $this->profile_model->story_profile($story_id);
-		$data['reviews'] = $this->profile_model->story_profile_reviews($story_id);
+		//$data['reviews'] = $this->profile_model->story_profile_reviews($story_id);
 		$data['chapters'] = $this->story_model->get_chapters($story_id);
 		$data['title'] = $data['story']['title'];
 	

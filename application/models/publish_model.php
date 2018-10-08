@@ -20,9 +20,11 @@ class publish_model extends CI_Model{
 	if($query){ return $this->db->insert_id(); }
 	}
 	
-	public function insert_publish_story($data){
-	return $this->db->insert('published_story', $data);
-	}
+	public function new_chapter($data){
+	$query = $this->db->insert('chapter', $data);
+	if($query){ return $this->db->insert_id(); }
+	}	
+
 	
 	public function insert_genre($story_id, $genre){
 	$error_counter = 0;
@@ -57,21 +59,9 @@ class publish_model extends CI_Model{
 	if($error_counter == 0){ return TRUE; }else{ return FALSE; }
 	}
 	
-	public function get_chapter_num($story_id){
-	$this->db->select('chapter_number');
-	$this->db->from('chapters');
-	$this->db->where('story_id', $story_id);
-	$this->db->order_by('chapter_number', 'DESC');
-	$query = $this->db->get();
-	if($query->num_rows() > 0){
-		foreach($query->result() as $row){
-		return $row->chapter_number;}
-	}else{
-		return 1;}
-	}
 	
-	public function insert_chapter($data){echo 'aw';
-	return $this->db->insert('chapters', $data);
+	public function insert_chapter($data){
+	return $this->db->insert('chapter', $data);
 	}
 	
 

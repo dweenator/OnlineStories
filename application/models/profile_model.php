@@ -4,11 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class profile_model extends CI_Model{
 
 	public function story_profile($story_id){	
-	$this->db->select('story.story_id,display_name,story_title,synopsis,date_added');
-	$this->db->from('published_story');
-	$this->db->join('story', 'story.story_id = published_story.story_id');
-	$this->db->join('user_profile', 'user_profile.user_id = published_story.user_id');
-	$this->db->where('published_story.story_id',$story_id);
+	$this->db->select('story.story_id,display_name,story_title,synopsis,story.date_added');
+	$this->db->from('story');
+	$this->db->join('user_profile', 'user_profile.user_id = story.user_id');
+	$this->db->where('story.story_id',$story_id);
 	$query = $this->db->get()->result();
 	$data = array();
 	
@@ -69,7 +68,7 @@ class profile_model extends CI_Model{
 		
 		foreach($query as $row){
 		$data['content_warning'][$row->content_warning_id] = $row->content_warning_name;}
-		
+		/**
 		$this->db->select('chapter_id,chapter_number,chapter_title');
 		$this->db->from('chapters');
 		$this->db->where('story_id', $story_id);
@@ -77,7 +76,7 @@ class profile_model extends CI_Model{
 		
 		foreach($query as $row){
 		$data['chapters'][$row->chapter_id]['number'] = $row->chapter_number;
-		$data['chapters'][$row->chapter_id]['title'] = $row->chapter_title;}
+		$data['chapters'][$row->chapter_id]['title'] = $row->chapter_title;} **/
 	}
 	return $data;
 	}
