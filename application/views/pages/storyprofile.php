@@ -200,7 +200,7 @@
 					<div class="modal-body">
 					<?php foreach($story['new_tags'] as $id=>$tag){?>
 					<input type="radio" name="suggest_tag" value="<?php echo $id; ?>">
-					<?php echo $tag; ?></input>
+					<?php echo $tag; ?>
 					<?php } ?>
 					</div>
 					<div class="modal-footer">
@@ -238,7 +238,7 @@
 				<div class="form-group">
 				<label for="review-rating">Rate the story</label>
 				<div name="review-rating" value="" class="form-control" id="review-rating"></div>
-				<input type="hidden" name="hidden-rating" id="hidden-rating"></input>
+				<input type="hidden" name="hidden-rating" id="hidden-rating">
 				</div>
 				<div class="form-group">
 				<label for="review-content">Write your review</label>

@@ -77,14 +77,6 @@ class story extends CI_Controller {
 	$new_story = $this->publish_model->new_story($story);
 	
 		if($new_story > 0){
-			/** 
-		$new_chapter['story_id'] = $new_story;
-		$chapter['chapter_number'] = $chapter_number;
-		$new_chapter['chapter_title'] = $this->input->post('chapter-title');
-		$new_chapter['chapter_content'] = $this->input->post('chapter-content');
-		$new_chapter['date_added'] = mdate('%Y-%m-%d %h:%i:%s', time());
-		$new_chapter_id = $this->publish_model->new_chapter($new_chapter);	
-		*/
 
 		$genre = $this->input->post('genre');
 		$tags = $this->input->post('tags');
@@ -217,20 +209,6 @@ class story extends CI_Controller {
 	$this->session->set_flashdata($message);
 	redirect('pages/storyprofile/'.$story_id);}}
 	}
-		
-	public function submit_review(){
-	$data['story_id'] = $this->uri->segment(3);
-	$data['user_id'] = $this->account_model->get_userid($this->session->userdata('username'));
-	$data['rating'] = $this->input->post('hidden-rating');
-	$data['summary'] = $this->input->post('review-content');
-	$data['date_added'] = mdate('%Y-%m-%d %H-%i-%s', time());
-	$result = $this->story_model->insert_review($data);
-	if($result == TRUE){
-	redirect('pages/storyprofile/'.$data['story_id']);
-	}else{
-	$this->session->flash_data('review_message','Cannot submit review, try again later');
-	redirect('pages/storyprofile/'.$data['story_id']);}
-	}
 	
 	public function like(){
 	$story_id = $this->uri->segment(3);
@@ -285,7 +263,7 @@ class story extends CI_Controller {
 	
 	public function story_dashboard(){
 	$story_id = $this->uri->segment(3);
-	$data['story'] = $this->dashboard_story_model->get_story($story_id);
+	$data['story'] = $this->story_dashboard_model->get_story($story_id);
 	if(!empty($data['story'])){
 		if($data['story']['image'] == null){
 		$data['story']['cover_image'] = 'http://placehold.it/200x200';}else{

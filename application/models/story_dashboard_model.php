@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class dashboard_story_model extends CI_Model{
+class story_dashboard_model extends CI_Model{
 
 	public function get_story($story_id){
 	$this->db->select('story.story_id,story_title,synopsis,display_name');

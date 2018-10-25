@@ -12,13 +12,32 @@ class review_model extends CI_Model{
 	return $query->num_rows();	
 	}
 	
-	public function check_story_review($user_id, $story_id){
+	public function check_biased_review($user_id, $story_id){
+		
+	$this->db->select('*');
+	$this->db->from('story');
+	$this->db->where('story_id', $story_id);
+	$this->db->where('user_id', $user_id);
+	$query = $this->db->get();
+
+		if($query->num_rows() > 0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function story_review_exists($user_id, $story_id){
 	$this->db->select('story_review_id');
 	$this->db->from('story_review');
 	$this->db->where('user_id', $user_id);
 	$this->db->where('story_id', $story_id);
 	$query = $this->db->get();
-	return $query->num_rows();	
+		if($query->num_rows() > 0){
+			return TRUE;
+		}else{ 
+			return FALSE;
+		}
 	}
 	
 	public function check_chapter_review($user_id, $chapter_id){
