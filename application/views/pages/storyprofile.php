@@ -234,7 +234,7 @@
 			<?php } } ?>			
 			<h2>Reviews</h2>
 			<div>
-			<form id="submit-review" action="<?=base_url()?>main/story_review/<?=$story['id']?>" method="post">
+			<form id="submit-review" action="<?=base_url()?>reviews/story_review/<?=$story['id']?>" method="post">
 				<div class="form-group">
 				<label for="review-rating">Rate the story</label>
 				<div name="review-rating" value="" class="form-control" id="review-rating"></div>
