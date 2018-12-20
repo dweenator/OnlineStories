@@ -86,10 +86,7 @@ class profile_model extends CI_Model{
 	
 	}
 	
-	public function user_profile($user_id){
-		
-		
-	}
+
 	
 	
 

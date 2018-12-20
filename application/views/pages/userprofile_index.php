@@ -17,9 +17,9 @@
 	<div class="navbar-default" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 		<ul class="nav" id="side-menu">
-		<li><a href="<?=base_url();?>account/userprofile/">Profile</a></li>
-		<li><a href="<?=base_url();?>account/userprofile_published_stories/">Published</a></li>
-		<li><a href="<?=base_url();?>account/userprofile_bookmarked_stories/">Bookmarked</a></li>
+		<li><a href="<?=base_url();?>profile_user/profile/">Profile</a></li>
+		<li><a href="<?=base_url();?>profile_user/published_stories/">Published</a></li>
+		<li><a href="<?=base_url();?>profile_user/bookmarked_stories/">Bookmarked</a></li>
 		</ul>
 		</div>
 	</div>

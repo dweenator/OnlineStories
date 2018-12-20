@@ -8,7 +8,7 @@
 	$message = $this->session->flashdata('message');
 	$form_error = $this->session->flashdata('error');
 	?>
-	<div class="lg-md-2" align="center"><?php if(isset($message)){ echo $message; }?></div>
+	<div class="lg-md-2"><?php if(isset($message)){ echo $message; }?></div>
 		<form method="post" action="<?php echo base_url();?>account/login">
           <div class="form-group">
             <label for="username">Username</label>

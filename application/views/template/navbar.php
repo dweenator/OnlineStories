@@ -91,7 +91,7 @@
 	  <span class="glyphicon glyphicon-user"></span></a>
 	  <ul class="dropdown-menu">
 	  <?php if($this->session->userdata('is_logged_in') == TRUE){?>
-	  <li><a href="<?php echo base_url();?>account/userprofile">Profile</a></li>
+	  <li><a href="<?php echo base_url();?>profile_user/profile">Profile</a></li>
 	  <li><a href="<?php echo base_url();?>account/logout">Logout</a></li><?php }else{ ?>
       <li><a href="<?php echo base_url();?>pages/register">Register</a></li>
       <li><a href="<?php echo base_url();?>pages/login">Login</a></li><?php } ?>
